@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Somar ou Subtrair Dias a uma Data</title>
+    <meta name="description" content="Adicione ou subtraia dias a uma data escolhida.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="logo.webp">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo"><img src="logo.webp" alt="Calculadora de Investimento"> <span class="logo-text">CalInvest</span></div>
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <ul class="nav-list">
+            <li><b><a href="index.html">Sobre</a></b></li>
+            <li><b><a href="#contact">Contato</a></b></li>
+            <li><b><a href="somadias.html">Outras Páginas</a></b></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <h2>Somar ou Subtrair Dias a uma Data</h2>
+        
+        <label for="date">Data Inicial:</label>
+        <input type="date" id="date">
+        
+        <label for="days">Número de Dias:</label>
+        <input type="number" id="days" placeholder="Digite o número de dias">
+        
+        <label for="operation" class="checkbox-label">
+            <input type="radio" name="operation" id="add" checked> Somar
+        </label>
+        <label for="operation" class="checkbox-label">
+            <input type="radio" name="operation" id="subtract"> Subtrair
+        </label>
+
+        <button onclick="calculateNewDate()">Calcular</button>
+        
+        <p id="result"></p>
+    </div>
+    <div class="sidebar">
+        <h3>Ferramentas</h3>
+        <ul>
+            <li><a href="entredatas.html">Calculadora de Dias</a></li>
+            <li><a href="somadias.html">Somar/Subtrair Dias</a></li>
+            <li><a href="cronometro.html">Cronômetro</a></li>
+            <!-- Adicione outros links de ferramentas conforme necessário -->
+        </ul>
+    </div>
+    
+    <script src="script.js"></script>
+    <script>
+        function calculateNewDate() {
+            const dateInput = document.getElementById('date').value;
+            const days = parseInt(document.getElementById('days').value);
+            const add = document.getElementById('add').checked;
+            const date = new Date(dateInput);
+
+            if (isNaN(date.getTime())) {
+                document.getElementById('result').innerText = "Por favor, insira uma data válida.";
+                return;
+            }
+
+            let newDate;
+            if (add) {
+                newDate = new Date(date.setDate(date.getDate() + days));
+            } else {
+                newDate = new Date(date.setDate(date.getDate() - days));
+            }
+
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('result').innerText = `Nova Data: ${newDate.toLocaleDateString('pt-BR', options)}`;
+        }
+    </script>
+</body>
+</html>

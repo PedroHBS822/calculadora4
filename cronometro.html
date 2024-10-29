@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cronômetro Online</title>
+    <meta name="description" content="Um cronômetro simples para medir o tempo.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="logo.webp">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo"><img src="logo.webp" alt="Calculadora de Investimento"> <span class="logo-text">CalInvest</span></div>
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <ul class="nav-list">
+            <li><b><a href="index.html">Sobre</a></b></li>
+            <li><b><a href="#contact">Contato</a></b></li>
+            <li><b><a href="outras.html">Outras Páginas</a></b></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h2>Cronômetro</h2>
+        <div id="timer">00:00:00</div>
+        <button id="startBtn">Iniciar</button>
+        <button id="stopBtn" disabled>Parar</button>
+        <button id="resetBtn" disabled>Reiniciar</button>
+    </div>
+
+    <div class="sidebar">
+        <h3>Ferramentas</h3>
+        <ul>
+            <li><a href="entredatas.html">Calculadora de Dias</a></li>
+            <li><a href="somadias.html">Somar/Subtrair Dias</a></li>
+            <li><a href="cronometro.html">Cronômetro</a></li>
+        </ul>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        let timerInterval;
+        let seconds = 0;
+
+        function updateTimer() {
+            seconds++;
+            const hours = Math.floor(seconds / 3600);
+            const minutes = Math.floor((seconds % 3600) / 60);
+            const secs = seconds % 60;
+
+            document.getElementById('timer').innerText = 
+                String(hours).padStart(2, '0') + ':' +
+                String(minutes).padStart(2, '0') + ':' +
+                String(secs).padStart(2, '0');
+        }
+
+        document.getElementById('startBtn').addEventListener('click', function() {
+            timerInterval = setInterval(updateTimer, 1000);
+            this.disabled = true;
+            document.getElementById('stopBtn').disabled = false;
+            document.getElementById('resetBtn').disabled = false;
+        });
+
+        document.getElementById('stopBtn').addEventListener('click', function() {
+            clearInterval(timerInterval);
+            this.disabled = true;
+            document.getElementById('startBtn').disabled = false;
+        });
+
+        document.getElementById('resetBtn').addEventListener('click', function() {
+            clearInterval(timerInterval);
+            seconds = 0;
+            document.getElementById('timer').innerText = '00:00:00';
+            this.disabled = true;
+            document.getElementById('startBtn').disabled = false;
+        });
+    </script>
+</body>
+</html>

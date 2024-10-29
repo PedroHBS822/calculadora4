@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Dias entre Datas</title>
+    <meta name="description" content="Calcule o total de dias entre duas datas, com a opção de contar apenas dias úteis. Preencha os campos de data e veja os resultados em tempo real.">
+    <meta name="keywords" content="calcular dias, dias úteis, cálculo de datas, ferramenta de cálculo, JavaScript">
+    <meta name="author" content="Seu Nome ou Nome da Sua Empresa">
+    <meta property="og:title" content="Calculadora de Dias Úteis">
+    <meta property="og:description" content="Uma ferramenta simples para calcular o total de dias entre duas datas, com opção de considerar apenas dias úteis.">
+    <meta property="og:image" content="URL da imagem para visualização" /> <!-- URL de uma imagem representativa -->
+    <meta property="og:url" content="URL da página" /> <!-- URL da página -->
+    <meta name="robots" content="index, follow"> <!-- Instruções para motores de busca -->
+    <link rel="stylesheet" href="style.css"> <!-- Link para o seu arquivo de estilo, se houver -->
+    <link rel="icon" href="logo.webp"> <!-- Ícone da página -->
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo"><img src="logo.webp" alt="Calculadora de Investimento"> <span class="logo-text">CalInvest</span></div>
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <ul class="nav-list">
+            <li><b><a href="index.html">Sobre</a></b></li>
+            <li><b><a href="#contact">Contato</a></b></li>
+            <li><b><a href="#other">Outras Páginas</a></b></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <h2>Calculadora de Dias entre Datas</h2>
+        <label for="start-date">Data Inicial:</label>
+        <i><p id="start-error" style="color: red; display: none;">Por favor, preencha esta data:</p></i>
+        <input type="date" id="start-date">
+        
+        
+        <label for="end-date">Data Final:</label>
+        <i><p id="end-error" style="color: red; display: none;">Por favor, preencha esta data:</p></i>
+        <input type="date" id="end-date">
+        
+        
+        <label for="business-days" class="checkbox-label">
+            <input type="checkbox" id="business-days"> Contar apenas dias úteis    
+        </label>
+        
+        <button onclick="calculateDays()">Calcular</button>
+        
+        <p id="result"></p>
+    </div>
+    <div class="sidebar">
+        <h3>Ferramentas</h3>
+        <ul>
+            <li><a href="entredatas.html">Calculadora de Dias</a></li>
+            <li><a href="somadias.html">Somar/Subtrair Dias</a></li>
+            <li><a href="cronometro.html">Cronômetro</a></li>
+            <!-- Adicione outros links de ferramentas conforme necessário -->
+        </ul>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
